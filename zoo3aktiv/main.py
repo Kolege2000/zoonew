@@ -9,5 +9,5 @@ def activate_visitor_case():
 def activate_business_case():
     run_business_case()
 
-#activate_business_case()
+activate_business_case()
 activate_visitor_case()
