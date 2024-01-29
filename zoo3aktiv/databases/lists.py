@@ -57,3 +57,10 @@ bild_pfade = [          # Polarwelt
 bild_idx_reihenfolge = [[5, 1, 3, 4, 2, 0], # Polarwelt
                         [2, 5, 1, 4, 3, 0], # Savannengehege
                         [2, 1, 3, 0, 4, 5]] # unterwasserwelt
+
+# immutable, globale Variable (Tuple)
+oeffnungszeiten = ("09:00", "19:00")
+
+eintrittspreise = ("Kinder bis 3 Jahre : Freier Eintritt",
+                   "Kinder bis 15 Jahre : 15€",
+                   "Erwachsene : 20€")
