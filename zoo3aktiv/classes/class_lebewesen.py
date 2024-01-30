@@ -1,5 +1,7 @@
+import tkinter as tk
+import sys
 from classes.class_GuV_quelle import Einnahme_und_Kostenquelle
-from databases.lists import anlaufstellen
+from databases.lists import *
 from sounds.play_sound import playing_sound
 from inside_acting.ausgang.exit import get_out
 from inside_acting.ia_quiz import *
@@ -22,7 +24,6 @@ class Zooangestellter(Einnahme_und_Kostenquelle, Mensch):
     def __init__(self, income, expenditure, name, position):
         Einnahme_und_Kostenquelle.__init__(self, income, expenditure)
         Mensch.__init__(self, name, position)
-
 class Besucher(Einnahme_und_Kostenquelle, Mensch):
     def __init__(self, income, expenditure, name, position, money):
         Einnahme_und_Kostenquelle.__init__(self, income, expenditure)
@@ -30,12 +31,46 @@ class Besucher(Einnahme_und_Kostenquelle, Mensch):
         self.money              =   money
         self.points             =   0
         self.already_been_there =   []
-
+    def exit(self):
+        abschiedsfenster = tk.Tk()
+        tk.Label(abschiedsfenster, text="Schade, bis zum nächsten Mal.").pack()
+        tk.Button(abschiedsfenster, text="Tschüss", command=sys.exit).pack()
+        abschiedsfenster.mainloop()
+    def welcome(self):
+        self.window = tk.Tk()
+        self.window.title('Willkommen')
+        self.window.geometry('450x120')
+        self.window.geometry(f'+{550}+{300}')
+        tk.Label(self.window, text="Herzlich Willkommen lieber Zoobesucher, du befindest dich direkt vor dem Zoo").pack()
+        tk.Button(self.window, text="weiter", command=lambda : [self.window.destroy(), self.opening_hours()]).pack()
+        self.window.mainloop()
+    def opening_hours(self):
+        # öffnet ein Tkinter-Fenster mit entsprechendem Text (tk.Label)
+        self.window = tk.Tk()
+        self.window.title('Öffnungzeiten')
+        self.window.geometry('450x120')
+        self.window.geometry(f'+{550}+{300}')
+        tk.Label(self.window, text=f"Bist du während der Öffnungszeiten am Zoo?\n\nÖffnungszeiten: {oeffnungszeiten[0]} bis {oeffnungszeiten[1]}\n").pack()
+        # zwei Antwortbuttons (ja + nein) erstellen
+        tk.Button(self.window, width= '12', text="Ja", command=lambda: [self.window.destroy(), self.enter_the_zoo()]).pack()
+        tk.Button(self.window, width= '12', text="Nein", command=lambda: [self.window.destroy(), self.exit()]).pack()
+        # Tkinter-Fenster starten und auf Benutzereingaben warten.
+        self.window.mainloop()
+    def enter_the_zoo(self):
+        self.window = tk.Tk()
+        self.window.title('Zooeingang')
+        self.window.geometry('450x170')
+        self.window.geometry(f'+{550}+{300}')
+        tk.Label(self.window,  text=f"Möchtest du den Zoo betreten?\n\nPreise:\n{eintrittspreise[0]}\n{eintrittspreise[1]}\n{eintrittspreise[2]}\n").pack()
+        tk.Button(self.window, width= '12', text="Ja", command=lambda: [self.window.destroy(), self.paying_ticket()]).pack()
+        tk.Button(self.window, width= '12', text="Nein", command=lambda: [self.window.destroy(), self.exit()]).pack()
+        self.window.mainloop()
+    def paying_ticket(self):
+        self.money -= 20
     def go_to(self):
         options = '\n'.join([f'{key}: {value[1]}' if key != self.position else f'{key}: {value[2]}' for key, value in anlaufstellen.items()])
         position_nr = input(f'du stehst {anlaufstellen[self.position][0]} {anlaufstellen[self.position][1]}. Wo willst du hingehen?\n{options}\n')
         return position_nr
-
     def inside_acting(self):
         playing_sound(self)
 

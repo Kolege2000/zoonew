@@ -1,5 +1,8 @@
 from objects.being import *
 
+def welcome_visitorcase(anna):
+    anna.welcome()
+
 def run_visitor_case(anna):
     new_position_nr =   int(anna.go_to())
 
