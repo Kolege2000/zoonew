@@ -29,7 +29,7 @@ class Order:
         button_exit = tk.Button(root, text='raus hier', width=25, height=3, command= root.destroy)
         button_exit.pack(side=tk.BOTTOM, anchor=tk.SE, padx=10, pady=10)
 
-        button_order = tk.Button(root, text='bestellen', width=25, height=3, command=lambda : self.button_order_click())
+        button_order = tk.Button(root, text='bestellen', width=25, height=3, command=lambda : self.button_order_click(anna))
         button_order.pack(side=tk.BOTTOM, anchor=tk.SE, padx=10, pady=10)
 
         self.label_total_price  =   tk.Label(root, text=self.total_price, font=('Arial', 16))
@@ -42,8 +42,8 @@ class Order:
         self.total_price[1] += price
         self.label_total_price.configure(text=self.total_price)
 
-    def button_order_click(self):
-        if self.anna.money >= self.total_price[1]:
+    def button_order_click(self,anna):
+        if self <= anna:
             self.anna.money -= self.total_price[1]
             print('Essen gekauft')
             print(f'du hast noch {self.anna.money} € übrig\n')
@@ -51,6 +51,8 @@ class Order:
             print('du hast nicht genug Geld\n')
         self.root.destroy()
 
+    def __le__(self, other):
+        return self.total_price[1] <= other.money
 def run_order(anna):
     root = tk.Tk()
     Order(root, anna)

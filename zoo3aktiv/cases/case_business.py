@@ -36,7 +36,7 @@ def list_income_expenditure():
     balance_sheet                     =   building[2].guv_rechnung()
     print(  f'Es wurden heute insgesamt {balance_sheet[0]} € eingenommen\n'
             f'Gesamtkosten für heute betragen {balance_sheet[1]} €\n'
-            f'dies ergibt eine Bilanz von {balance_sheet[2]} €\n')
+            f'Dies ergibt eine Bilanz von {balance_sheet[2]} €\n')
 
 def run_business_case():
     visitors                =   generate_visitors()
