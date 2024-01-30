@@ -3,11 +3,13 @@ from cases.case_business import run_business_case
 from objects.being import *
 
 def activate_visitor_case():
+    input('Press enter to start visitorcase\n')
     visitor1 = create_visitor()
     welcome_visitorcase(visitor1)
     run_visitor_case(visitor1)
 
 def activate_business_case():
+    print('\nBusinesscase\n')
     run_business_case()
 
 activate_business_case()

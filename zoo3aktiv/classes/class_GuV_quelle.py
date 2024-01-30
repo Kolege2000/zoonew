@@ -13,4 +13,4 @@ class Einnahme_und_Kostenquelle:
             total_employee_costs   +=   employee.expenditure
 
         balance_sheet = total_employee_income - total_employee_costs - self.fixed_costs
-        return balance_sheet
+        return total_employee_income, total_employee_costs + self.fixed_costs , balance_sheet

@@ -9,7 +9,7 @@ def playing_sound(anna):
     pygame.mixer.music.load(mp3_file_path)
     pygame.mixer.music.play()
 
-    while pygame.mixer.music.get_busy():
-        pygame.time.Clock().tick(3)
+    pygame.time.delay(int(2 * 1000))
 
     pygame.quit()
+

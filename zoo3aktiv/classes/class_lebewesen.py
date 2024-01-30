@@ -11,6 +11,9 @@ class Lebewesen:
     def __init__(self, name, position):
         self.name           =   name
         self.position       =   position
+
+    def go_to(self):
+        print('das Lebewesen dreht sich im Kreis')
 #-----------------------------------------------------
 class Mensch(Lebewesen):
     def __init__(self, name, position):

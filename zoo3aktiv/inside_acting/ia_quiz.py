@@ -8,7 +8,7 @@ class Quiz:
         self.position   = anna_pos - 3
         self.root.title (anlaufstellen[anna_pos][1])
         self.geometrie  = root.geometry('830x850')
-        self.root.geometry(f'+{550}+{0}')
+        self.root.geometry(f'+{380}+{0}')
         self.resizable  = root.resizable(height=False, width=True)
         self.points     = 0
         self.buttons    = []

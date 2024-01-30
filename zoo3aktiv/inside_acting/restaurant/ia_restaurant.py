@@ -5,6 +5,7 @@ class Order:
         self.root           = root
         self.root.title('Restaurant')
         self.root.geometry('500x700')
+        self.root.geometry(f'+{500}+{20}')
         self.root.resizable(width=False, height=False)
         self.order_text     = ''
         self.total_price    = ['Gesamtbetrag', 0, '€']
@@ -19,7 +20,10 @@ class Order:
             button_pick_meal = tk.Button(root, text=f'{name} : {price} €', command=lambda n=name, p=price : self.button_pick_meal_click(n,p))
             button_pick_meal.pack(side=tk.TOP, fill=tk.X, padx=5, pady=5)
 
-        self.label_order   =   tk.Label(root, text=self.order_text)
+        label_guthaben  = tk.Label(root, text= f'Guthaben : {anna.money} €', font=('Arial', 16))
+        label_guthaben.pack(anchor=tk.NE)
+
+        self.label_order   =   tk.Label(root, justify= 'left', text=self.order_text)
         self.label_order.pack(anchor=tk.NW)
 
         button_exit = tk.Button(root, text='raus hier', width=25, height=3, command= root.destroy)
