@@ -1,5 +1,4 @@
 import tkinter as tk
-import sys
 from classes.class_GuV_quelle import Einnahme_und_Kostenquelle
 from databases.lists import *
 from sounds.play_sound import playing_sound
@@ -74,7 +73,7 @@ class Besucher(Einnahme_und_Kostenquelle, Mensch):
         self.window.mainloop()
     def paying_ticket(self):
         self.money -= 20
-        print(f'Du hast noch {self.money} übrig')
+        print(f'Du hast noch {self.money} € übrig\n')
     def go_to(self):
         options = '\n'.join([f'{key}: {value[1]}' if key != self.position else f'{key}: {value[2]}' for key, value in anlaufstellen.items()])
         position_nr = input(f'du stehst {anlaufstellen[self.position][0]} {anlaufstellen[self.position][1]}. Wo willst du hingehen?\n{options}\n')
@@ -86,7 +85,8 @@ class Besucher(Einnahme_und_Kostenquelle, Mensch):
             print('da warst du schon\n')
         else:
             if self.position    ==  1:
-                print(f'du hast {self.points} von 18 möglichen Punkten erreicht!')
+                input(f'du hast {self.points} von 18 möglichen Punkten erreicht!\n'
+                      f'"enter" drücken zum verlassen')
                 get_out()
             elif self.position  ==  2:
                 run_order(self)
