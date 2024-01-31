@@ -86,7 +86,7 @@ class Besucher(Einnahme_und_Kostenquelle, Mensch):
         else:
             if self.position    ==  1:
                 input(f'du hast {self.points} von 18 möglichen Punkten erreicht!\n'
-                      f'"enter" drücken zum verlassen')
+                      f'Zum verlassen "enter" drücken')
                 get_out()
             elif self.position  ==  2:
                 run_order(self)

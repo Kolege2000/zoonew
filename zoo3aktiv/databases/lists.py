@@ -21,7 +21,7 @@ aussage =   [         # Polarwelt
                     'Otter',                        # otter
                     'Simba (König der Löwen)'       # löwe
                 ],       # unterwasserwelt
-                [   'In der Gruppe existier ein Weibchen. Stirbt das Weibchen, wechselt das größte Männchen das Geschlecht',  # clownfisch
+                [   'In der Gruppe existier ein Weibchen. Stirbt das Weibchen, \nwechselt das größte Männchen das Geschlecht',  # clownfisch
                     'Das älteste bekannte Exemplar erreichte ein geschätzes Alter von über 500 Jahren',  # grönlandhai
                     'Das Geschlecht dieser Tiere wird durch die Temperaturen während der Brutzeit bestimmt',  # alligtor
                     'Hat drei Herzen',  # oktopus
